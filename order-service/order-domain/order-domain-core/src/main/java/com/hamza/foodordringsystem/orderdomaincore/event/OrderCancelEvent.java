@@ -5,10 +5,9 @@ import com.hamza.foodordringsystem.orderdomaincore.entity.Order;
 
 import java.time.ZonedDateTime;
 
-public class OrderCreateEvent extends OrderEvent {
+public class OrderCancelEvent extends OrderEvent {
 
-
-    public OrderCreateEvent(Order order, ZonedDateTime createdAt) {
+    public OrderCancelEvent(Order order, ZonedDateTime createdAt) {
         super(order, createdAt);
     }
 }

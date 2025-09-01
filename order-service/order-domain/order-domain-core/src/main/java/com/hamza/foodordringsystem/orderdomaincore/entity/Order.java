@@ -7,7 +7,6 @@ import com.hamza.foodordringsystem.orderdomaincore.valueobject.OrderItemId;
 import com.hamza.foodordringsystem.orderdomaincore.valueobject.StreetAddress;
 import com.hamza.foodordringsystem.orderdomaincore.valueobject.TrackingId;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -35,6 +34,31 @@ public class Order extends AggregateRoot<OrderId> {
         failureMessages = builder.failureMessages;
     }
 
+    public void initializeOrder() {
+        setId(new OrderId(UUID.randomUUID()));
+        trackingId = new TrackingId(UUID.randomUUID());
+        orderStatus = OrderStatus.PENDING;
+        initializeOrderItems();
+    }
+    public void validateOrder(){
+        validateInitialOrder();
+        validateTotalPrice();
+        validateItemsPrice();
+    }
+    public void pay(){
+        orderStatus = OrderStatus.PAID;
+    }
+
+    public void approve(){
+        orderStatus = OrderStatus.APPROVED;
+    }
+    public void initCancel(List<String> failureMessages){
+        orderStatus = OrderStatus.CANCELLED;
+    }
+
+    public void cancel(List<String> failureMessages){
+        orderStatus = OrderStatus.CANCELLED;
+    }
 
     public CustomerId getCustomerId() {
         return customerId;

@@ -5,21 +5,10 @@ import com.hamza.foodordringsystem.orderdomaincore.entity.Order;
 
 import java.time.ZonedDateTime;
 
-public class OrderPaidEvent implements DomainEvent<Order> {
+public class OrderPaidEvent extends OrderEvent {
 
-    private final Order order;
-    private final ZonedDateTime createdAt;
 
-    public OrderPaidEvent( Order order,ZonedDateTime createdAt) {
-
-        this.order = order;
-        this.createdAt = createdAt;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-    public ZonedDateTime getCreatedAt() {
-        return createdAt;
+    public OrderPaidEvent(Order order, ZonedDateTime createdAt) {
+        super(order, createdAt);
     }
 }
