@@ -56,7 +56,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
     public void cancelOrder(Order order, List<String> failureMessages) {
         order.cancel(failureMessages);
         log.info("Order with id {} has been cancelled", order.getId().getValue());
-        return new;
+
 
     }
 
@@ -70,7 +70,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
         order.getItems().forEach(orderItem -> restaurant.getProduct().forEach(restaurantPdoduct ->{
          Product currentProduct = orderItem.getProduct();
           if(currentProduct.equals(restaurantPdoduct)){
-              currentProduct.updateWithConfirmeNameAndPrice(restaurantPdoduct.getName(), restaurantPdoduct.getPrice())
+              currentProduct.updateWithConfirmeNameAndPrice(restaurantPdoduct.getName(), restaurantPdoduct.getPrice());
           }
         }));
 

@@ -12,8 +12,8 @@ public abstract class BaseEntity<ID> {
         return id;
     }
 
-    public static void setId(RestaudantId id) {
-        this.id = id;
+    public void setId(RestaudantId id) {
+        this.id = (ID) id;
     }
 
     @Override
